@@ -1,0 +1,142 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+  }
+  .title{
+    top: 10%;
+    position: absolute;
+    z-index: 2;
+  }
+  .container {
+    position: relative;
+    z-index: -1;
+    width: 90%;
+    height: 90%;
+    overflow-x: auto; /* Allows horizontal scrolling on smaller screens */
+    overflow-y: auto;
+  }
+  
+  .periodic-table {
+    display: grid;
+    grid-template-columns: repeat(18, 4vmax); /* 18 columns for the periodic table */
+    grid-template-rows: repeat(9, auto); /* Adjust row count based on actual number of elements */
+    gap: 5px;
+    margin: 0 auto;
+    max-width: 100%; /* Makes the table responsive */
+    overflow-x: auto; /* Ensures horizontal scrolling on small screens */
+    overflow-y: auto;
+  }
+  .periodic-table > .element:nth-child(-n+2) {
+    grid-column: span 1; /* Each box takes 1 column */
+  }
+  .element {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    min-width: 60px;
+    height: 100px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  .element:has(.filler){
+    border: 0px solid #ccc;
+    color: whitesmoke;
+  }
+  .element:has(.Period){
+    border: 0px solid #ccc;
+  }
+  .element:has(.noble_gas){
+    background-color: lightblue;
+  }
+  .element:has(.alkali_metal){
+    background-color: lightcoral;
+  }
+  .element:has(.diatomic_nonmetal){
+    background-color: rgba(87, 87, 252, 0.582);
+  }
+  .element:has(.metalloid){
+    background-color: lime;
+  }
+  .element:has(.polyatomic_nonmetal){
+    background-color: rgba(87, 87, 252, 0.582);
+  }
+  .element:has(.post-transition_metal){
+    background-color: rgb(153, 153, 66);
+  }
+  .element:has(.transition_metal){
+    background-color: yellowgreen;
+  }
+  .element:has(.lanthanide){
+    background-color: turquoise;
+  }
+  .element:has(.actinide){
+    background-color: rgba(85, 107, 47, 0.568);
+  }
+  .element:has(.unknown){
+    background-color: yellowgreen;
+  }
+  .element:has(.alkaline_earth_metal){
+    background-color: orange;
+  }
+  
+  .element-number {
+    font-size: 0.45vmax;
+    color: whitesmoke;
+  }
+  
+  .element-symbol {
+    font-size: 0.75vmax;
+    font-weight: bold;
+  }
+  
+  .element-name {
+    font-size: 0.5vmax;
+    margin: 5px 0;
+  }
+  
+  .element-atomic-mass {
+    font-size: 0.45vmax;
+    color: whitesmoke;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .periodic-table {
+      grid-template-columns: repeat(8, 1fr); /* Reduces number of columns on smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .periodic-table {
+      grid-template-columns: repeat(6, 1fr); /* Even fewer columns on very small screens */
+    }
+  
+    .element {
+      min-width: 50px; /* Makes each square smaller on mobile */
+      height: 80px;
+    }
+  
+    .element-number,
+    .element-symbol,
+    .element-name,
+    .element-atomic-mass {
+      font-size: 12px; /* Ensures text is large enough to read on mobile */
+    }
+  }
+  
